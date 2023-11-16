@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MoonLight</string>
+    <string name="msg_bem_vindo" translatable="false">Seja Muito\nBem Vindo</string>
+    <string name="email">Email</string>
+    <string name="nome">Nome</string>
+    <string name="senha">Senha</string>
+    <string name="msg_Nao_e_usuario">Não é usuário?</string>
+    <string name="msg_Cadastre_se">Cadastre-se</string>
+    <string name="msg_Ja_e_usuario">Já é usuário? prossiga </string>
+    <string name="msg_Base_de_dados"> ERRO </string>
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1072097300083",
+    "project_id": "moonlight-8959d",
+    "storage_bucket": "moonlight-8959d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072097300083:android:1da073253699d3a6d16406",
+        "android_client_info": {
+          "package_name": "br.com.project.moonlight"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjX2aBeGxFjUL4B31TGSY6xy35GQ8YQz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
