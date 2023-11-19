@@ -4,18 +4,32 @@ import androidx.annotation.NonNull;
 
 public enum EnumElements {
 
+    MSG_ALERT{
+        @NonNull
+        @Override
+        public String toString() {
+            return "Aviso";
+        }
+    },
+    MSG_VOLTAR{
+        @NonNull
+        @Override
+        public String toString() {
+            return "Voltar";
+        }
+    },
     MSG_VALUES_NULL{
         @NonNull
         @Override
         public String toString() {
-            return "Nenhum campo pode esta vazio.";
+            return "Nenhum campo pode esta vazio!";
         }
     },
     MSG_PASS_INVALID{
         @NonNull
         @Override
         public String toString() {
-            return "Senha não pode conter menos que 6 caracteres.";
+            return "A Senha não pode conter menos que 6 caracteres.";
         }
     },
     MSG_EMAIL_INVALID{
@@ -29,7 +43,15 @@ public enum EnumElements {
         @NonNull
         @Override
         public String toString() {
-            return "Email já utilizado.";
+            return "Email já utilizado!";
+        }
+
+    },
+    MSG_FAILED_CONECTION{
+        @NonNull
+        @Override
+        public String toString() {
+            return "Falha na conexão";
         }
     },
     MSG_REGISTER_SUCCESSFUL{

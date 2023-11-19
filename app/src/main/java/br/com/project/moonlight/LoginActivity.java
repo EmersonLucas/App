@@ -2,24 +2,16 @@ package br.com.project.moonlight;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-
 import br.com.project.moonlight.utils.AlertDialog;
 import br.com.project.moonlight.utils.EnumElements;
 import br.com.project.moonlight.utils.Validate;
 import br.com.project.moonlight.database.DAO;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -43,7 +35,9 @@ public class LoginActivity extends AppCompatActivity {
                 if(Validate.validateLogin(textEmail.getText().toString().trim().toLowerCase(),textPassword.getText().toString().trim())){
                 loginUser(textEmail.getText().toString().trim().toLowerCase(),textPassword.getText().toString().trim(),
                 LoginActivity.this);
-                }else  AlertDialog.showCustomDialogAlert(EnumElements.MSG_VALUES_NULL.toString(), this);
+                }else{
+                    new AlertDialog().alertDialog(this, EnumElements.MSG_VALUES_NULL);
+                }
         });
     }
 
@@ -61,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             } else {
-                AlertDialog.showCustomDialogAlert(EnumElements.MSG_CREDENC_INVALID.toString(), this);
+                new AlertDialog().alertDialog(this, EnumElements.MSG_CREDENC_INVALID);
             }
         });
 

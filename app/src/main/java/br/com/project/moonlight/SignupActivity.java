@@ -1,21 +1,12 @@
 package br.com.project.moonlight;
 
-import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
+
+import static br.com.project.moonlight.database.DAO.registerNewUser;
+
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
-
-import br.com.project.moonlight.database.DAO;
 import br.com.project.moonlight.model.User;
 import br.com.project.moonlight.utils.AlertDialog;
 import br.com.project.moonlight.utils.EnumElements;
@@ -37,35 +28,21 @@ public class SignupActivity extends AppCompatActivity {
 
         btnContinuar.setOnClickListener(view -> {
 
-          if (Validate.validateRegister(textName.getText().toString().trim(), textEmail.getText().toString().trim().toLowerCase(), textPassword.getText().toString().trim())){
-              if (Validate.validateEmail(textEmail.getText().toString().trim().toLowerCase())){
-                  AlertDialog.showCustomDialogAlert(EnumElements.MSG_EMAIL_INVALID.toString(), this);
+          if (Validate.validateRegister(textName.getText().toString().trim(), textEmail.getText().toString().trim().toLowerCase(),
+                  textPassword.getText().toString().trim())) {
+              if (Validate.validateEmail(textEmail.getText().toString().trim().toLowerCase())) {
+                  new AlertDialog().alertDialog(this, EnumElements.MSG_EMAIL_INVALID);
                   return;
               }
               if (!Validate.validatePassword(textPassword.getText().toString().trim())) {
-                  AlertDialog.showCustomDialogAlert(EnumElements.MSG_PASS_INVALID.toString(), this);
+                  new AlertDialog().alertDialog(this, EnumElements.MSG_PASS_INVALID);
                   return;
               }
 
-              try {
-                  User user = new User(textName.getText().toString().trim(),
-                          textEmail.getText().toString().trim().toLowerCase(),
-                          textPassword.getText().toString().trim());
-                  DAO.registerNewUser(user);
-              }catch(Exception e){
-                  AlertDialog.showCustomDialogAlert(EnumElements.MSG_EMAIL_USED.toString(), this);
-                  return;
-              }
-              AlertDialog.showCustomDialogAlertNewView(
-                      EnumElements.MSG_REGISTER_SUCCESSFUL.toString(),
-                      this,
-                      MainActivity.class,
-                      EnumElements.MSG_REGISTER_SUCCESSFUL);
-          }
-          else AlertDialog.showCustomDialogAlert(EnumElements.MSG_VALUES_NULL.toString(), this);;
+              User user = new User(textName.getText().toString().trim(), textEmail.getText().toString().trim().toLowerCase(), textPassword.getText().toString().trim());
+              registerNewUser(user, this,this);
+          }else new AlertDialog().alertDialog(this, EnumElements.MSG_VALUES_NULL);
         });
-
-
     }
 
     private void initElements() {
